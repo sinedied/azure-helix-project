@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# Helix on Azure
+Helix project running on Azure Edge CDN.
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--azure-helix-project--sinedied.hlx.page/
+- Live: https://main--azure-helix-project--sinedied.hlx.live/
 
 ## Installation
 
