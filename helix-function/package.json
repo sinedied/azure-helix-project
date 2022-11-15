@@ -1,0 +1,12 @@
+{
+  "name": "helix-function",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.0"
+  }
+}
