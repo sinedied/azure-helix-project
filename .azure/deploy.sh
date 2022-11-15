@@ -36,7 +36,7 @@ for i in ${!function_names[@]}; do
   function_app_url=${function_app_urls[$i]}
 
   echo "Deploying function app '${function_app_name}'..."
-  pushd ${function_app_name}
+  pushd ${function_names[$i]}
   func azure functionapp publish ${function_app_name}
   popd
 done
