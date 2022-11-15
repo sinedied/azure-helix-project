@@ -13,18 +13,27 @@
 import fetch, { Request, Response } from 'node-fetch';
 
 export async function helixWorker(context, req) {
-  console.log({req })
   const url = new URL(req.url);
   url.hostname = process.env.HELIX_HOSTNAME;
+  url.port = 80;
 
   const request = new Request(url, req);
   request.headers.set('x-forwarded-host', request.headers.get('host'));
   request.headers.set('x-byo-cdn-type', 'azure');
 
-  let res = await fetch(req);
-  res = new Response(res.body, res);
-  res.headers.delete('age');
-  res.headers.delete('x-robots-tag');
+  console.log(`Fetching ${request.url}`);
 
-  context.res = res;
+  let res = await fetch(request);
+  res = new Response(res.body, res);
+
+  const headers = { ...res.headers.raw() };
+  console.log({ headers });
+  delete headers['age'];
+  delete headers['x-robots-tag'];
+
+  context.res = {
+    status: res.status,
+    headers: headers,
+    body: await res.text(),
+  };
 }
